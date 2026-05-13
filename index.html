@@ -3,40 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAHD BABY | Beshiklar</title>
+    <title>MAHD BABY | Katalog</title>
     <style>
-        body { background: #fdfcf9; text-align: center; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
-        .card { 
-            background: white; padding: 30px; border-radius: 25px; 
-            display: inline-block; box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-            max-width: 400px; width: 90%; margin-top: 30px;
+        body { background: #fdfcf9; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; color: #333; }
+        header { text-align: center; padding: 40px 0; }
+        h1 { color: #4a5d4e; margin: 0; font-size: 32px; letter-spacing: 2px; }
+        .subtitle { color: #888; font-size: 14px; margin-top: 5px; }
+        
+        /* Katalog setkasi */
+        .catalog { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px;
         }
-        h1 { color: #4a5d4e; margin-bottom: 5px; font-size: 28px; }
-        p { color: #888; margin-bottom: 20px; }
-        img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .btn { 
-            display: block; margin-top: 25px; padding: 18px; 
-            background: #4a5d4e; color: white; text-decoration: none; 
-            border-radius: 50px; font-weight: bold; font-size: 18px;
+        
+        /* Mahsulot kartasi */
+        .product-card { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
             transition: 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
         }
-        .btn:hover { background: #3a4d3e; transform: translateY(-2px); }
-        .contact { margin-top: 25px; color: #4a5d4e; font-weight: 600; font-size: 16px; }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card img { width: 100%; height: 300px; object-fit: cover; }
+        .product-info { padding: 20px; }
+        .product-info h3 { margin: 0; color: #4a5d4e; }
+        .price { color: #b58d67; font-weight: bold; font-size: 20px; margin: 10px 0; }
+        
+        .buy-btn { 
+            display: inline-block; 
+            padding: 12px 25px; 
+            background: #4a5d4e; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .footer { text-align: center; margin-top: 50px; color: #888; border-top: 1px solid #eee; padding-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="card">
+
+    <header>
         <h1>MAHD BABY</h1>
-        <p>Premium sifatdagi beshiklar</p>
-        
-        <!-- Siz yuklagan images papkasi ichidagi 4.png.png rasmi -->
-        <img src="images/4.png.png" alt="Mahd Baby Beshik">
-        
-        <a href="https://t.me/mahd_baby" class="btn">Telegramdan buyurtma berish</a>
-        
-        <div class="contact">
-            Aloqa: +998 33 454 87 00
+        <p class="subtitle">Premium beshiklar to'plami</p>
+    </header>
+
+    <div class="catalog">
+        <!-- 1-mahsulot -->
+        <div class="product-card">
+            <img src="images/4.png.png" alt="Beshik 1">
+            <div class="product-info">
+                <h3>Klassik Beshik</h3>
+                <p class="price">Kelishilgan narxda</p>
+                <a href="https://t.me/mahd_baby" class="buy-btn">Buyurtma berish</a>
+            </div>
+        </div>
+
+        <!-- 2-mahsulot (Hozircha o'sha rasm, keyin o'zgartirishingiz mumkin) -->
+        <div class="product-card">
+            <img src="images/4.png.png" alt="Beshik 2">
+            <div class="product-info">
+                <h3>Elegant Model</h3>
+                <p class="price">Kelishilgan narxda</p>
+                <a href="https://t.me/mahd_baby" class="buy-btn">Buyurtma berish</a>
+            </div>
+        </div>
+
+        <!-- 3-mahsulot -->
+        <div class="product-card">
+            <img src="images/4.png.png" alt="Beshik 3">
+            <div class="product-info">
+                <h3>Modern Beshik</h3>
+                <p class="price">Kelishilgan narxda</p>
+                <a href="https://t.me/mahd_baby" class="buy-btn">Buyurtma berish</a>
+            </div>
         </div>
     </div>
+
+    <div class="footer">
+        <p>Aloqa: +998 33 454 87 00</p>
+    </div>
+
 </body>
 </html>
