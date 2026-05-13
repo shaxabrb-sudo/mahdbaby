@@ -9,19 +9,16 @@
         :root { --primary: #4a5d4e; --secondary: #b58d67; --bg: #fdfcf9; --light-green: #cbd5c0; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #333; overflow-x: hidden; }
         
-        /* Navigatsiya */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 22px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
         .nav-links a { margin: 0 12px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; font-weight: 600; }
 
-        /* Banner */
         .hero { position: relative; height: 450px; background: #e9ece4; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
         .hero-text { z-index: 2; padding: 0 20px; }
         .hero-text h1 { font-size: 42px; color: var(--primary); margin-bottom: 10px; }
         .hero-text p { font-size: 18px; color: #555; margin-bottom: 25px; }
         .btn-main { background: var(--primary); color: white; padding: 12px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; }
 
-        /* Katalog */
         .section-title { text-align: center; margin: 50px 0 30px; font-size: 26px; color: var(--primary); position: relative; }
         .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--secondary); margin: 10px auto; }
         
@@ -37,7 +34,6 @@
         .buy-link { display: block; padding: 10px; background: #f8f8f8; color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.3s; border: 1px solid #eee; }
         .buy-link:hover { background: var(--primary); color: white; }
 
-        /* Footer */
         footer { background: var(--primary); color: white; padding: 50px 5% 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-col h4 { margin-bottom: 20px; font-size: 18px; }
@@ -46,7 +42,6 @@
         .socials a { color: white; font-size: 20px; margin-right: 15px; text-decoration: none; }
         .copy { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: #cbd5c0; }
 
-        /* Floating Button */
         .float-tg { position: fixed; bottom: 25px; right: 25px; background: #0088cc; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
     </style>
 </head>
@@ -74,29 +69,26 @@
         <h2 class="section-title">Mahsulotlarimiz</h2>
         <div class="products">
             
-            <!-- 1-mahsulot -->
             <div class="p-card">
                 <img src="images/4.png" alt="Beshik 4">
                 <div class="p-info">
                     <h3>Klassik Oq Beshik</h3>
-                    <span class="price">Kelishilgan narxda</span>
-                    <a href="https://t.me/mahd_baby" class="buy-link">Telegramda bog'lanish</a>
-                </div>
-            </div>
-
-            <!-- 2-mahsulot -->
-            <div class="p-card">
-                <img src="images/10.jpg" alt="Beshik 10">
-                <div class="p-info">
-                    <h3>Qirollik modeli (Qizil)</h3>
                     <span class="price">Premium sifat</span>
                     <a href="https://t.me/mahd_baby" class="buy-link">Telegramda bog'lanish</a>
                 </div>
             </div>
 
-            <!-- 3-mahsulot -->
             <div class="p-card">
-                <img src="images/5.jpg" alt="Beshik 5">
+                <img src="images/10.png" alt="Beshik 10">
+                <div class="p-info">
+                    <h3>Qirollik modeli (Qizil)</h3>
+                    <span class="price">Eksklyuziv</span>
+                    <a href="https://t.me/mahd_baby" class="buy-link">Telegramda bog'lanish</a>
+                </div>
+            </div>
+
+            <div class="p-card">
+                <img src="images/5.png" alt="Beshik 5">
                 <div class="p-info">
                     <h3>Elegant Beshik</h3>
                     <span class="price">Yumshoq matoli</span>
@@ -104,9 +96,8 @@
                 </div>
             </div>
 
-            <!-- 4-mahsulot -->
             <div class="p-card">
-                <img src="images/6.jpg" alt="Beshik 6">
+                <img src="images/6.png" alt="Beshik 6">
                 <div class="p-info">
                     <h3>Modern Beshik</h3>
                     <span class="price">Ixcham va qulay</span>
@@ -114,9 +105,8 @@
                 </div>
             </div>
 
-            <!-- 5-mahsulot -->
             <div class="p-card">
-                <img src="images/7.jpg" alt="Beshik 7">
+                <img src="images/7.png" alt="Beshik 7">
                 <div class="p-info">
                     <h3>Soddalashtirilgan Model</h3>
                     <span class="price">Hamyonbop narx</span>
@@ -124,19 +114,17 @@
                 </div>
             </div>
 
-            <!-- 6-mahsulot -->
             <div class="p-card">
-                <img src="images/8.jpg" alt="Beshik 8">
+                <img src="images/8.png" alt="Beshik 8">
                 <div class="p-info">
                     <h3>Lyuks to'plam</h3>
-                    <span class="price">Eksklyuziv</span>
+                    <span class="price">Maxsus dizayn</span>
                     <a href="https://t.me/mahd_baby" class="buy-link">Telegramda bog'lanish</a>
                 </div>
             </div>
 
-            <!-- 7-mahsulot -->
             <div class="p-card">
-                <img src="images/9.jpg" alt="Beshik 9">
+                <img src="images/9.png" alt="Beshik 9">
                 <div class="p-info">
                     <h3>Viktoriya modeli</h3>
                     <span class="price">Sifatli yog'och</span>
@@ -155,18 +143,16 @@
                 <div class="socials">
                     <a href="https://t.me/mahd_baby"><i class="fab fa-telegram"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             <div class="footer-col">
                 <h4>Biz bilan aloqa</h4>
                 <p><i class="fa fa-phone"></i> +998 33 454 87 00</p>
-                <p><i class="fa fa-envelope"></i> info@mahdbaby.com</p>
                 <p><i class="fa fa-map-marker-alt"></i> O'zbekiston bo'ylab yetkazish</p>
             </div>
         </div>
         <div class="copy">
-            &copy; 2026 MAHD BABY. Barcha huquqlar himoyalangan.
+            &copy; 2026 MAHD BABY.
         </div>
     </footer>
 
