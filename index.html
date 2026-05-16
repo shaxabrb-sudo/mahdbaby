@@ -7,45 +7,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #4a5d4e; --secondary: #b58d67; --bg: #fdfcf9; --light-green: #cbd5c0; }
+        * { box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #333; overflow-x: hidden; }
+
+        /* NAV */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 22px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
         .nav-links a { margin: 0 12px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; font-weight: 600; }
 
-        /* BANNER */
-        .hero {
-            position: relative;
-            height: 550px;
-            background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner.PNG');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.35);
-        }
-        .hero-text {
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
-        }
-        .hero-text h1 { font-size: 48px; color: white; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
-        .hero-text p { font-size: 20px; color: #f0f0f0; margin-bottom: 25px; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+        /* SLIDER */
+        .slider { position: relative; height: 550px; overflow: hidden; }
+        .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease; }
+        .slide.active { opacity: 1; }
+        .slide::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+        .slide-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 2; padding: 0 20px; }
+        .slide-content h1 { font-size: 48px; color: white; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+        .slide-content p { font-size: 20px; color: #f0f0f0; margin-bottom: 25px; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
         .btn-main { background: var(--primary); color: white; padding: 14px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; }
         .btn-main:hover { background: var(--secondary); }
 
+        /* Slider dots */
+        .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; border: none; }
+        .dot.active { background: white; transform: scale(1.2); }
+
+        /* Slider arrows */
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 10; transition: 0.3s; }
+        .slider-btn:hover { background: rgba(255,255,255,0.4); }
+        .slider-btn.prev { left: 20px; }
+        .slider-btn.next { right: 20px; }
+
+        /* SECTIONS */
         .section-title { text-align: center; margin: 50px 0 30px; font-size: 26px; color: var(--primary); position: relative; }
         .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--secondary); margin: 10px auto; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* PRODUCTS */
         .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .p-card { background: white; border-radius: 20px; overflow: hidden; transition: 0.4s; border: 1px solid #f0f0f0; text-align: center; }
+        .p-card { background: white; border-radius: 20px; overflow: hidden; transition: 0.4s; border: 1px solid #f0f0f0; text-align: center; opacity: 0; transform: translateY(30px); }
+        .p-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
         .p-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
         .p-card img { width: 100%; height: 320px; object-fit: cover; }
         .p-info { padding: 20px; }
@@ -53,21 +53,29 @@
         .price { color: var(--secondary); font-weight: bold; font-size: 18px; margin-bottom: 15px; display: block; }
         .buy-link { display: block; padding: 10px; background: #f8f8f8; color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.3s; border: 1px solid #eee; }
         .buy-link:hover { background: var(--primary); color: white; }
-        .testimonials { background: #cbd5c0; padding: 60px 0; margin-bottom: 0; }
+
+        /* TESTIMONIALS */
+        .testimonials { background: #cbd5c0; padding: 60px 0; }
         .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .t-card { background: rgba(255,255,255,0.5); padding: 30px; border-radius: 15px; text-align: center; }
         .t-card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+
+        /* FOOTER */
         footer { background: var(--primary); color: white; padding: 50px 5% 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-col h4 { margin-bottom: 20px; font-size: 18px; }
         .footer-col p { font-size: 14px; color: #cbd5c0; line-height: 1.6; }
-        .socials { margin-top: 20px; }
-        .socials a { color: white; font-size: 20px; margin-right: 15px; text-decoration: none; }
+        .socials { margin-top: 20px; display: flex; gap: 15px; }
+        .socials a { color: white; font-size: 22px; text-decoration: none; transition: 0.3s; }
+        .socials a:hover { color: var(--secondary); }
         .copy { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: #cbd5c0; }
+
+        /* FLOAT TG */
         .float-tg { position: fixed; bottom: 25px; right: 25px; background: #0088cc; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">MAHD BABY</div>
         <div class="nav-links">
@@ -78,14 +86,49 @@
         <div><i class="fa fa-shopping-bag" style="color: var(--primary); font-size: 20px;"></i></div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Premium Beshiklar To'plami</h1>
-            <p>Farzandingiz uchun eng shinam va xavfsiz tanlov</p>
-            <a href="#catalog" class="btn-main">Katalogni ko'rish</a>
+    <!-- SLIDER -->
+    <div class="slider">
+        <div class="slide active" style="background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner.PNG')">
+            <div class="slide-content">
+                <h1>Premium Beshiklar To'plami</h1>
+                <p>Farzandingiz uchun eng shinam va xavfsiz tanlov</p>
+                <a href="#catalog" class="btn-main">Katalogni ko'rish</a>
+            </div>
         </div>
-    </section>
+        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner2.PNG')">
+            <div class="slide-content">
+                <h1>Sifat va Hashamat</h1>
+                <p>Har bir beshik sevgi bilan tayyorlangan</p>
+                <a href="#catalog" class="btn-main">Katalogni ko'rish</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner3.png')">
+            <div class="slide-content">
+                <h1>Chiroyli Dizayn</h1>
+                <p>Farzandingiz uchun eng zo'r muhit</p>
+                <a href="#catalog" class="btn-main">Katalogni ko'rish</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner4.jpeg')">
+            <div class="slide-content">
+                <h1>Mahd Baby — Ishonchli Tanlov</h1>
+                <p>O'zbekiston bo'ylab yetkazib beramiz</p>
+                <a href="#catalog" class="btn-main">Katalogni ko'rish</a>
+            </div>
+        </div>
 
+        <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fa fa-chevron-left"></i></button>
+        <button class="slider-btn next" onclick="changeSlide(1)"><i class="fa fa-chevron-right"></i></button>
+
+        <div class="slider-dots">
+            <button class="dot active" onclick="goToSlide(0)"></button>
+            <button class="dot" onclick="goToSlide(1)"></button>
+            <button class="dot" onclick="goToSlide(2)"></button>
+            <button class="dot" onclick="goToSlide(3)"></button>
+        </div>
+    </div>
+
+    <!-- CATALOG -->
     <div class="container" id="catalog">
         <h2 class="section-title">Mahsulotlarimiz</h2>
         <div class="products">
@@ -156,6 +199,7 @@
         </div>
     </div>
 
+    <!-- TESTIMONIALS -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title" style="margin-top: 0;">Mijozlarimiz sharhlari</h2>
@@ -174,14 +218,15 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer id="about">
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="logo" style="color: white; margin-bottom: 15px;">MAHD BABY</div>
                 <p>Yuqori sifatli materiallardan tayyorlangan turli xil qo'lda tayyorlangan mahsulotlar.</p>
                 <div class="socials">
-                    <a href="https://t.me/mahd_baby"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/mahd_baby" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://instagram.com/mahd_baby" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -198,5 +243,40 @@
     <a href="https://t.me/mahd_baby" class="float-tg">
         <i class="fab fa-telegram-plane"></i>
     </a>
+
+    <script>
+        // SLIDER
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let autoSlide = setInterval(() => changeSlide(1), 4000);
+
+        function goToSlide(n) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = n;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+            clearInterval(autoSlide);
+            autoSlide = setInterval(() => changeSlide(1), 4000);
+        }
+
+        function changeSlide(dir) {
+            let next = (current + dir + slides.length) % slides.length;
+            goToSlide(next);
+        }
+
+        // SCROLL ANIMATION
+        const cards = document.querySelectorAll('.p-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+    </script>
+
 </body>
 </html>
