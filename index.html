@@ -8,26 +8,43 @@
     <style>
         :root { --primary: #4a5d4e; --secondary: #b58d67; --bg: #fdfcf9; --light-green: #cbd5c0; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #333; overflow-x: hidden; }
-        
-        /* Navigatsiya */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 22px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
         .nav-links a { margin: 0 12px; text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase; font-weight: 600; }
 
-        /* Banner */
-        .hero { position: relative; height: 450px; background: #e9ece4; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-        .hero-text { z-index: 2; padding: 0 20px; }
-        .hero-text h1 { font-size: 42px; color: var(--primary); margin-bottom: 10px; }
-        .hero-text p { font-size: 18px; color: #555; margin-bottom: 25px; }
-        .btn-main { background: var(--primary); color: white; padding: 12px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        /* BANNER */
+        .hero {
+            position: relative;
+            height: 550px;
+            background-image: url('https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/banner.PNG');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+        }
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+        .hero-text h1 { font-size: 48px; color: white; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+        .hero-text p { font-size: 20px; color: #f0f0f0; margin-bottom: 25px; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+        .btn-main { background: var(--primary); color: white; padding: 14px 40px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .btn-main:hover { background: var(--secondary); }
 
-        /* Katalog */
         .section-title { text-align: center; margin: 50px 0 30px; font-size: 26px; color: var(--primary); position: relative; }
         .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--secondary); margin: 10px auto; }
-        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        
         .p-card { background: white; border-radius: 20px; overflow: hidden; transition: 0.4s; border: 1px solid #f0f0f0; text-align: center; }
         .p-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
         .p-card img { width: 100%; height: 320px; object-fit: cover; }
@@ -36,14 +53,10 @@
         .price { color: var(--secondary); font-weight: bold; font-size: 18px; margin-bottom: 15px; display: block; }
         .buy-link { display: block; padding: 10px; background: #f8f8f8; color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 600; transition: 0.3s; border: 1px solid #eee; }
         .buy-link:hover { background: var(--primary); color: white; }
-
-        /* Mijozlar sharhlari */
         .testimonials { background: #cbd5c0; padding: 60px 0; margin-bottom: 0; }
         .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .t-card { background: rgba(255,255,255,0.5); padding: 30px; border-radius: 15px; text-align: center; }
         .t-card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
-
-        /* Footer */
         footer { background: var(--primary); color: white; padding: 50px 5% 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-col h4 { margin-bottom: 20px; font-size: 18px; }
@@ -51,13 +64,10 @@
         .socials { margin-top: 20px; }
         .socials a { color: white; font-size: 20px; margin-right: 15px; text-decoration: none; }
         .copy { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: #cbd5c0; }
-
-        /* Floating Telegram Button */
         .float-tg { position: fixed; bottom: 25px; right: 25px; background: #0088cc; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">MAHD BABY</div>
         <div class="nav-links">
@@ -79,9 +89,9 @@
     <div class="container" id="catalog">
         <h2 class="section-title">Mahsulotlarimiz</h2>
         <div class="products">
-            
+
             <div class="p-card">
-                <img src="images/4.png.png" alt="Beshik 4">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/4.png.png" alt="Beshik 4">
                 <div class="p-info">
                     <h3>Klassik Oq Beshik</h3>
                     <span class="price">Premium Sifat</span>
@@ -90,7 +100,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/5.png.png" alt="Beshik 5">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/5.png.png" alt="Beshik 5">
                 <div class="p-info">
                     <h3>Elegant Sutli Beshik</h3>
                     <span class="price">Yumshoq matoli</span>
@@ -99,7 +109,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/6.png.png" alt="Beshik 6">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/6.png.png" alt="Beshik 6">
                 <div class="p-info">
                     <h3>Modern Kulrang Beshik</h3>
                     <span class="price">Ixcham dizayn</span>
@@ -108,7 +118,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/7.png.png" alt="Beshik 7">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/7.png.png" alt="Beshik 7">
                 <div class="p-info">
                     <h3>Soddalashtirilgan Model</h3>
                     <span class="price">Shinam va qulay</span>
@@ -117,7 +127,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/8.png.png" alt="Beshik 8">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/8.png.png" alt="Beshik 8">
                 <div class="p-info">
                     <h3>Qirollik modeli (To'q qizil)</h3>
                     <span class="price">Eksklyuziv</span>
@@ -126,7 +136,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/9.png.png" alt="Beshik 9">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/9.png.png" alt="Beshik 9">
                 <div class="p-info">
                     <h3>Viktoriya uslubidagi Beshik</h3>
                     <span class="price">Sifatli yog'och</span>
@@ -135,7 +145,7 @@
             </div>
 
             <div class="p-card">
-                <img src="images/10.png.png" alt="Beshik 10">
+                <img src="https://raw.githubusercontent.com/shaxabrb-sudo/mahdbaby/main/images/10.png.png" alt="Beshik 10">
                 <div class="p-info">
                     <h3>Lyuks To'plam</h3>
                     <span class="price">Maxsus dizayn</span>
@@ -188,6 +198,5 @@
     <a href="https://t.me/mahd_baby" class="float-tg">
         <i class="fab fa-telegram-plane"></i>
     </a>
-
 </body>
 </html>
